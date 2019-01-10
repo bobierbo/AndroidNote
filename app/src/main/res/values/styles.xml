@@ -1,0 +1,17 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="RightLeftOut" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/open_from_right</item>
+        <item name="android:activityOpenExitAnimation">@anim/open_to_left</item>
+        <item name="android:activityCloseExitAnimation">@anim/exit_from_left</item>
+        <item name="android:activityCloseEnterAnimation">@anim/exit_to_right</item>
+    </style>
+</resources>

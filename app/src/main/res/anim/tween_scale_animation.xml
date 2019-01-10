@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<scale xmlns:android="http://schemas.android.com/apk/res/android"
+       android:duration="2000"
+       android:fromXScale="0.0"
+       android:fromYScale="0.0"
+       android:interpolator="@android:anim/accelerate_interpolator"
+       android:pivotX="50%"
+       android:pivotY="50%"
+       android:toXScale="1.5"
+       android:toYScale="1.5"/>
+    <!--        pivotX：动画相对于物件的x坐标的开始位置
+				pivotY：动画相对于物件的y坐标的开始位置
+				注：以上两个属性从0%－100%中取值,50%取中心点
+
+				interpolator：
+				加速器先加速再减速 accelerate_decelerate_interpolator
+				加速 accelerate_interpolator
+				减速 decelerate_interpolator -->

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:oneshot="false" >
+<!-- oneshot 为true表示循环一次，为false表示无限循环  -->
+    <item
+        android:drawable="@drawable/image_one"
+        android:duration="200"/>
+    <item
+        android:drawable="@drawable/image_two"
+        android:duration="200"/>
+    <item
+        android:drawable="@drawable/image_three"
+        android:duration="200"/>
+    <item
+        android:drawable="@drawable/image_four"
+        android:duration="200"/>
+    <item
+        android:drawable="@drawable/image_five"
+        android:duration="200"/>
+
+</animation-list>

@@ -1,0 +1,9 @@
+4、Gif动画引擎
+		1）SurfaceView:高级控件，一般用于2D游戏、图像渲染、视频播放、相机预览。性能高、速度快（可以直接从硬件拿图像数据显示；二级缓存）
+		2）我们如何将GIF里面的一帧的画面解析出来，然后绘制在canvas上面？   Move类（影片对象）
+
+	5、LayoutTransition(布局动画)
+
+	6、Interpolator插值器
+
+	7、Bouncing Balls讲解

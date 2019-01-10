@@ -1,0 +1,13 @@
+当ViewGroup中有View添加、删除、隐藏、显示的时候才会体现出来
+LayoutTransition
+
+1.LayoutTransition.APPEARING：当View出现或者添加的时候View出现的动画。
+2.LayoutTransition.CHANGE_APPEARING：当添加View导致布局容器改变的时候整个布局容器的动画。
+3.LayoutTransition.DISAPPEARING：当View消失或者隐藏的时候View消失的动画。
+4.LayoutTransition.CHANGE_DISAPPEARING：当删除或者隐藏View导致布局容器改变的时候整个布局容器的动画。
+5.LayoutTransition.CHANGE：当不是由于View出现或消失造成对其他View位置造成改变的时候整个布局容器的动画。
+
+不能用于adapter中item，convertView不是容器，所以不支持item的子视图的添加或者移除
+只能用于listView添加或者移除item
+
+LayoutAnimation LayoutAnimationController 一般用于ListView或者GridView的item进入和退出动画

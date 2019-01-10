@@ -1,0 +1,121 @@
+android 动画编程
+一、什么是动画？
+
+二、Android里面为什么使用动画？有哪些好处？
+	答：增加用户体验、增加美感、绚丽的效果
+
+三、Android里面动画分为几类？（查看android api文档）
+	1、Drawable Animation (图片动画) 帧动画FrameAnimation，逐帧循环播放图片，常见于欢迎页作为背景动画
+	2、View Animation (视图动画) 补间动画TweenAnimation
+	3、PropertyAnimation(属性动画)
+
+四、Android里面动画的使用场景？
+	答：引导页、启动页、界面切换、弹出框（dialog、popupwindow）
+
+五、Android里面如何实现动画？
+	1、Drawable Animation——帧动画
+		1）xml文件配置     放在res/drawable下
+		2）xml的根节点<animation-list> 
+			<animation-list xmlns:android="http://	
+				schemas.android.com/apk/res/android"
+    				android:oneshot="true">
+    				<item android:drawable="@drawable/						rocket_thrust1" android:duration="200" />
+    				<item android:drawable="@drawable/						rocket_thrust2" android:duration="200" />
+    				<item android:drawable="@drawable/	
+				rocket_thrust3" android:duration="200" />
+			</animation-list>
+			oneshot 为true表示循环一次，为false表示无限循环
+
+		  app启动的时候就onCreate中让我们的帧动画AnimationDrawable执行？不行，可以用一下三种方法：
+			2.1）onWindowFocusChanged－－当我们的window窗口焦点方式改变的时候调用该方法
+			2.2）imageview.post(new runnable())
+			2.3）通过一些事件进行触摸
+	2、View Animation(补间动画－－TweenAnimation)
+		提问：动画的三要素：开始点、结束点、时间
+		1）xml文件配置   res/anim文件下
+		2）xml文件必须的有根节点：<alpha>, <scale>, <translate>, <rotate>
+			补间动画分为四类：
+			AlphaAnimation（渐变动画）
+				变化的范围 0-1  0表示透明   1表示不透明
+				fromAlpha :开始的透明度
+				toAlpha：结束透明度
+				duration：动画持续时间
+
+			ScaleAnimation (伸缩动画)
+				duration：动画执行时间
+				fromXScale：动画起使时的x坐标上的伸缩尺寸
+				toXScale：动画结束时的x坐标上的伸缩尺寸
+				fromYScale：动画起使时的y坐标上的伸缩尺寸
+				toYScale：动画结束时的y坐标上的伸缩尺寸
+
+
+				pivotX：动画相对于物件的x坐标的开始位置
+				pivotY：动画相对于物件的y坐标的开始位置
+				注：以上两个属性从0%－100%中取值
+				   50%取中心点
+
+				interpolator：加速器
+					先加速再减速
+					accelerate_decelerate_interpolator
+					加速
+					accelerate_interpolator
+					减速
+					decelerate_interpolator
+
+			TranslateAnimation(平移动画)
+				fromXDelta：动画起使时的x坐标上的位置
+				toXDelta：动画结束时的x坐标上的位置
+				fromYDelta：动画起使时的y坐标上的位置
+				toYDelta：动画结束时的y坐标上的位置
+				主意：没有指定fromXDelta fromYDelta toXDelta
+					toYDelta的时候，默认的是以自己为参照物
+
+				duration：动画执行时间
+			RotateAnimation(旋转动画)
+				fromDegrees：动画起使时物体的角度
+				toDegrees：动画结束时物体的角度（可以大于360）
+				说明：当我们的设置的角度为负数－－表示逆时针旋转
+					当我们的设置的角度为正数－－表示顺时针旋转
+					(负数from — to正数 －－－顺时针旋转)
+					(负数from — to负数 －－－逆时针旋转)
+					(正数from — to正数 －－－顺时针旋转)
+					(正数from — to负数 －－－逆时针旋转)
+				总结：凡是to为正数，那么物体就是顺时针旋转
+
+
+        3)AnimationSet(动画集)
+            配置多个动画
+            <set> 
+                <scale></scale>
+                <translate></translate>
+                ……
+            </set>
+    
+        4)我们来实现美食杰引导页
+    
+        5)activity切换动画两种实现方式
+            1）overridePendingTransition(enterAnim, exitAnim);
+                enterAnim：进入动画
+                exitAnim：退出动画
+            2）通过style文件来配置activity theme切换动画（再清单文件里面配置）
+                参考老师案例	
+            
+        6)总结：
+		
+
+    3、PropertyAnimation  属性动画 3.0+API出现
+	如果要在低版本使用属性动画该怎么办？
+	兼容包－使用方法一样（民间的：nineoldandroids-2.4.0.jar）
+		1）ObjectAnimator
+		2）ValueAnimator
+			2.1）区别：不会作用动画给view，但是时间还是会计算
+			2.2）什么时候使用ValueAnimator？－－－一般执行一些比较复杂的复合动画
+			2.3）多个动画同时执行，两种方式：
+			PropertyValuesHolder、AnimatorSet动画集合
+			2.4）TimeInterpolation：属性值的计算方式，如先快后慢
+			     		TypeEvaluator：根据属性的开始、结束值与TimeInterpolation计算出的因子计算出当前时间的属性值
+
+	4、Gif动画引擎
+		1）SurfaceView:高级控件，一般用于2D游戏、图像渲染、视频播放、相机预览。性能高、速度快（可以直接从硬件拿图像数据显示；二级缓存）
+		2）我们如何将GIF里面的一帧的画面解析出来，然后绘制在canvas上面？   Move类（影片对象）
+
